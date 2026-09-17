@@ -1,0 +1,14 @@
+venv/
+.venv/
+*/.venv/
+
+__pycache__/
+*.pyc
+
+*.db
+*.sqlite
+senhas_geradas.db
+instance/
+
+.vscode/
+```[cite: 4]
