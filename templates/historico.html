@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico de Senhas Salvas | Meu Portfólio</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    
+    <style>
+        /* CSS ADICIONAL (Estrutura da Tabela) */
+        .container {
+            max-width: 900px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .delete-button {
+            color: red; 
+            background: none; 
+            border: none; 
+            cursor: pointer;
+            padding: 0;
+            font-size: 1em;
+        }
+        .delete-button:hover {
+            text-decoration: underline;
+        }
+        .copy-button-table {
+            background: none; 
+            border: none; 
+            cursor: pointer; 
+            color: #007bff; 
+            margin-left: 5px;
+            font-size: 1em;
+            padding: 0;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Histórico de Senhas Salvas</h1>
+        
+        <a href="/" class="back-link">← Voltar para o Gerador</a>
+
+<form method="GET" action="{{ url_for('historico') }}" style="margin-bottom: 25px;">
+    <div style="display: flex; gap: 10px;">
+        <input type="text" name="search" placeholder="Buscar por nome do Serviço..." 
+               style="flex-grow: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+               value="{{ termo_pesquisa if termo_pesquisa else '' }}">
+        <button type="submit" 
+                style="padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            🔍 Buscar
+        </button>
+    </div>
+</form>
+
+        {% if senhas %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Serviço</th> 
+                    <th>Senha</th>
+                    <th>Força</th>
+                    <th>Data de Criação</th>
+                    <th>Ação</th> 
+                </tr>
+            </thead>
+            <tbody>
+                {% for senha in senhas %}
+                <tr id="senha-row-{{ senha['id'] }}">
+                    <td>{{ senha['id'] }}</td>
+                    <td>{{ senha['servico'] }}</td>
+                    
+                    <td>
+                        <span class="senha-cell-text">{{ senha['senha'] }}</span> 
+
+                       <<button onclick="copiarSenhaTabela('{{ senha.id | string }}')" class="copy-button-table"
+                       title="Copiar Senha">
+                        📋 </button>
+
+                    </td>
+
+                    <td>{{ senha['forca'] }}</td>
+                    <td>{{ senha['data_criacao'] }}</td>
+                    
+                    <td>
+                        <form method="POST" action="{{ url_for('deletar', id=senha['id']) }}" style="display: inline;">
+                            <button type="submit" class="delete-button"
+                                onclick="return confirm('Tem certeza que deseja excluir esta senha?')">
+                                🗑️ Excluir
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <p>Ainda não há senhas salvas no banco de dados.</p>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
