@@ -1,51 +1,17 @@
-# 🔒 Gerador de Senhas Seguras Web (Python/Flask)
+**Gerador de senhas Web**
 
-Este é um projeto Full-Stack básico construído com **Python e Flask** para gerar, analisar e gerenciar senhas de forma segura e organizada. É um ótimo exemplo de aplicação CRUD (Create, Read, Update, Delete) com persistência de dados.
+Aplicação web desenvolvida para a geração automatizada de senhas seguras, com recursos para gerenciamento e controle de histórico. O ProjetoO sistema foi estruturado para auxiliar os usuários na criação de chaves de acesso robustas, combinando diferentes critérios de segurança. O projeto conta com uma interface web intuitiva e uma estrutura em Python no backend para o processamento das rotas e histórico de geração. 
 
-## 🚀 Funcionalidades Chave
+**Funcionalidades**
+Geração de Senhas: Criação automática de senhas customizadas com base em critérios de segurança.Histórico de Acessos: Seção dedicada para consulta de senhas geradas anteriormente (historico.html).
+Interface Dinâmica: Estilização customizada e comportamento interativo controlados via CSS e JavaScript.  
 
-* **Geração de Senhas:** Gera senhas aleatórias com base em parâmetros customizáveis (tamanho, inclusão de maiúsculas, números e símbolos).
-* **Análise de Força:** Fornece feedback instantâneo e visual (cores) sobre a força da senha gerada.
-* **Persistência de Dados (CRUD):** Salva as senhas geradas em um banco de dados **SQLite** com o nome do serviço/site.
-* **Histórico Completo:** Permite **visualizar, copiar** e **excluir** registros de senhas salvas.
-* **Usabilidade:** Mantém o estado do formulário após a submissão e usa código **modular** (Python, HTML, CSS e JavaScript separados).
+**Tecnologias Utilizadas**
+Python (Flask/App): Estrutura principal do backend e controle de rotas (app.py).  
+HTML5 / Jinja2 Templates: Organização das páginas de interface (index.html, historico.html).  
+CSS3 & JavaScript: Estilização visual e interatividade no lado do cliente (static/).  
 
-## 🛠️ Tecnologias Utilizadas
-
-| Camada | Tecnologia | Descrição |
-| :--- | :--- | :--- |
-| **Backend** | Python 3 | Linguagem principal do servidor. |
-| **Framework** | Flask | Micro-framework leve para roteamento e servidor. |
-| **Banco de Dados** | SQLite3 | Banco de dados relacional leve e nativo do Python. |
-| **Frontend** | HTML5, CSS3, JavaScript | Interface de usuário e lógica de cópia/cores. |
-
-## ⚙️ Como Rodar o Projeto Localmente
-
-1.  **Clone o Repositório:**
-    ```bash
-    git clone [COLE O LINK DO SEU REPOSITÓRIO AQUI]
-    cd gerador-de-senhas-web
-    ```
-
-2.  **Crie e Ative o Ambiente Virtual:**
-    ```bash
-    python3 -m venv .venv
-    source .venv/bin/activate  # (Mac/Linux)
-    # .\venv\Scripts\activate  # (Windows PowerShell)
-    ```
-
-3.  **Instale as Dependências:**
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-4.  **Execute a Aplicação:**
-    ```bash
-    python3 -m flask run
-    ```
-
-5.  **Acesse:** Abra seu navegador em `http://127.0.0.1:5000/`.
-
----
-
-Com o `.gitignore` e o `README.md` criados, seu projeto está totalmente pronto para o último passo: **enviar para o GitHub** (Passo 4 da instrução anterior)! Siga aqueles comandos e seu projeto estará online!
+**Como rodar localmente**
+1. Clone este repositório em sua máquina local.Certifique-se de ter o Python instalado e instale as dependências listadas no arquivo requirements.txt:  Bashpip install -r requirements.txt
+2. Execute a aplicação através do arquivo principal: Bashpython app.py
+3. Abra o navegador e acesse o endereço local fornecido pelo terminal.
